@@ -220,3 +220,8 @@ select `Pokoje`.`numer` as `Numer pomieszczenia`, 'Sypialny' as `Typ` from `Poko
 union
 select `Sale`.`numer`, `Sale`.`typ_sali` from `Sale`;
 
+SELECT sale.numer, sale.typ_sali from sale INNER JOIN zajecia on zajecia.sala = sale.id INNER JOIN lekarze on lekarze.id = zajecia.prowadzacy WHERE lekarze.imie = "Damian"
+
+SELECT lekarze.imie, lekarze.nazwisko FROM lekarze INNER join zajecia on zajecia.prowadzacy = lekarze.id INNER JOIN sale on sale.id = zajecia.sala WHERE sale.numer = 113
+
+SELECT Concat(pacjenci.imie, " ", pacjenci.nazwisko) AS Pacjent FROM pacjenci INNER JOIN pokoje on pokoje.id = pacjenci.pokoj INNER JOIN opiekunowie on opiekunowie.id = pacjenci.opiekun WHERE pokoje.numer = 215 AND opiekunowie.nazwisko = "Klej"
